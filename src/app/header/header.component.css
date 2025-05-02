@@ -6,7 +6,8 @@ body {
 }
 
 header {
-  position: fixed;
+  position: sticky;
+  margin-bottom: 30px;
   top: 0;
   left: 0;
   width: 100%;
