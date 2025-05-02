@@ -2,11 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>ProeqtiIvera</title>
+    <title>Restourant</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Optimize font loading by specifying only the weights we need -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Load fonts separately with specific weights to optimize -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
       rel="stylesheet"
     />
     <link
@@ -23,7 +35,28 @@
       function show() {
         document.querySelector(".hamburger").classList.toggle("open");
         document.querySelector(".navigation").classList.toggle("active");
+
+        // Toggle body scroll
+        if (
+          document.querySelector(".navigation").classList.contains("active")
+        ) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "";
+        }
       }
+
+      // Close menu when clicking on a link
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".navigation a");
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            document.querySelector(".hamburger").classList.remove("open");
+            document.querySelector(".navigation").classList.remove("active");
+            document.body.style.overflow = "";
+          });
+        });
+      });
     </script>
   </body>
 </html>

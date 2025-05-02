@@ -8,7 +8,6 @@
 
   <div class="header1">
     <a class="a1" routerLink="/">🍕 Home</a>
-    <!-- <a class="a2" routerLink="/basket">🛵 Cart</a> -->
 
     <a routerLink="/basket" class="cart-icon">
       <span class="material-icons"> 🛵 shopping_cart</span>
@@ -18,20 +17,30 @@
     </a>
   </div>
 
-  <div class="navigation">
-    <button class="hamburger" onclick="show()">
-      <div id="bar1" class="bar"></div>
-      <div id="bar2" class="bar"></div>
-      <div id="bar3" class="bar"></div>
-    </button>
+  <button
+    class="hamburger"
+    [class.open]="isMenuOpen"
+    (click)="toggleMenu()"
+    aria-label="Menu"
+  >
+    <div id="bar1" class="bar"></div>
+    <div id="bar2" class="bar"></div>
+    <div id="bar3" class="bar"></div>
+  </button>
 
+  <div class="navigation" [class.active]="isMenuOpen">
     <nav>
       <ul>
-        <a routerLink="/"><li>🍕 Home</li></a>
-        <a routerLink="/basket"><li>🛵 Cart</li></a>
+        <a routerLink="/" (click)="closeMenu()"><li>🍕 Home</li></a>
+        <a routerLink="/basket" (click)="closeMenu()">
+          <li>
+            🛵 Cart
+            <span *ngIf="cartItemCount > 0" class="mobile-cart-count">{{
+              cartItemCount
+            }}</span>
+          </li>
+        </a>
       </ul>
     </nav>
   </div>
 </header>
-
-<h1 class="h1dd">Categories:</h1>

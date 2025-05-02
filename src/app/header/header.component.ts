@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-// import { BasketService } from '../services/basket.service';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { BasketService } from '../services/basket.service';
@@ -44,9 +43,43 @@ export class HeaderComponent implements OnInit {
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
+
+    // Prevent body scrolling when menu is open
+    if (this.isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   }
 
   closeMenu(): void {
     this.isMenuOpen = false;
+    document.body.style.overflow = '';
+  }
+
+  // Close menu when clicking outside
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const clickedElement = event.target as HTMLElement;
+    const navigation = document.querySelector('.navigation');
+    const hamburger = document.querySelector('.hamburger');
+
+    if (
+      this.isMenuOpen &&
+      navigation &&
+      hamburger &&
+      !navigation.contains(clickedElement) &&
+      !hamburger.contains(clickedElement)
+    ) {
+      this.closeMenu();
+    }
+  }
+
+  // Close menu on window resize
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    if (window.innerWidth > 768 && this.isMenuOpen) {
+      this.closeMenu();
+    }
   }
 }

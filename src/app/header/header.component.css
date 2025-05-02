@@ -1,3 +1,4 @@
+/* Optimized header CSS to reduce size */
 body {
   font-family: "Roboto", serif;
   margin: 0;
@@ -15,7 +16,6 @@ header {
   padding: 20px;
   background-color: #221c1c;
   color: white;
-  border-radius: 0;
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -27,34 +27,27 @@ header a {
   font-weight: bold;
 }
 
+.header1 {
+  display: flex;
+}
+
 .header1 a {
-  text-decoration: none;
   color: rgb(230, 230, 216);
   font-size: 18px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 10px 15px;
   border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
+  transition: 0.3s;
 }
 
 .header1 .a1 {
   margin-left: -325px;
 }
 
-.header1 .a2:hover {
-  background-color: rgb(196, 196, 175);
-  color: red;
-}
-
 .header1 a:hover {
   background-color: rgb(229, 16, 16);
   color: #221c1c;
-  transition: 0.3s;
   transform: translateX(2px);
-}
-
-.header1 {
-  display: flex;
 }
 
 .cart-icon {
@@ -64,7 +57,8 @@ header a {
   margin-left: 15px;
 }
 
-.cart-count {
+.cart-count,
+.mobile-cart-count {
   position: absolute;
   top: -8px;
   right: -8px;
@@ -80,6 +74,14 @@ header a {
   font-weight: bold;
 }
 
+.mobile-cart-count {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+  top: -2px;
+  right: auto;
+}
+
 p {
   font-size: 24px;
   margin: 0;
@@ -88,7 +90,6 @@ p {
 }
 
 .ddivera1 p .spdd {
-  /* color: rgb(190, 37, 37); */
   color: rgb(229, 16, 16);
   font-size: 32px;
   font-family: "Courier New", Courier, monospace;
@@ -99,13 +100,7 @@ p {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-nav {
-  position: absolute;
-  top: 100px;
-  right: 50px;
-  width: 250px;
-}
-
+/* Navigation styles */
 .navigation {
   position: fixed;
   right: -500px;
@@ -115,6 +110,13 @@ nav {
   transition: 0.5s;
   border-radius: 10%;
   margin-top: -25px;
+}
+
+nav {
+  position: absolute;
+  top: 100px;
+  right: 50px;
+  width: 250px;
 }
 
 .navigation ul li {
@@ -128,11 +130,13 @@ nav {
   padding: 20px 30px;
   border-bottom: 1pt solid red;
 }
+
 .navigation ul li:hover {
   color: red;
   transition: 0.5s;
 }
 
+/* Hamburger menu */
 .hamburger,
 .bar {
   position: fixed;
@@ -140,28 +144,28 @@ nav {
 
 .hamburger {
   display: none;
-  top: 5%;
-  left: 95%;
+  top: 3%;
+  /* left: 95%; */
   width: 40px;
   height: 40px;
   transform: translateY(-50%);
   border: 0;
   background: 0 0;
+  cursor: pointer;
 }
 
 .bar {
   top: 3px;
-  background: #000;
+  background-color: lightblue;
   width: 100%;
   height: 4px;
-  transition: all 0.3s ease-in;
-  background-color: lightblue;
+  transition: 0.3s;
+  border-radius: 2px;
 }
 
 #bar2 {
   top: 11px;
 }
-
 #bar3 {
   top: 19px;
 }
@@ -183,14 +187,92 @@ nav {
   background-color: #fff;
   transform: rotate(-45deg) translate(6px, -5px);
 }
-@media screen and (max-width: 750px) {
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+  .header1 .a1 {
+    margin-left: -150px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .header1 .a1 {
+    margin-left: -50px;
+  }
+  .ddivera1 p .spdd {
+    font-size: 28px;
+  }
+  .ddivera1 p .spdd1 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 768px) {
   .hamburger {
     display: flex;
-    margin-left: -100px;
+    /* margin-left: -100px; */
     margin-top: 25px;
+    z-index: 1001;
   }
+
   .header1 {
     display: none;
+  }
+  header {
+    padding: 15px 10px;
+  }
+
+  .navigation {
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    border-radius: 0 0 0 20px;
+    top: 0;
+    padding-top: 80px;
+    z-index: 999;
+  }
+
+  .navigation ul {
+    padding-left: 0;
+  }
+
+  .navigation ul li {
+    font-size: 1.2em;
+    padding: 15px 20px;
+    text-align: center;
+  }
+
+  .ddivera1 {
+    z-index: 1000;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .hamburger {
+    top: 3%;
+    right: 10%;
+  }
+
+  .ddivera1 p .spdd {
+    font-size: 24px;
+  }
+  .ddivera1 p .spdd1 {
+    font-size: 18px;
+  }
+  header {
+    padding: 10px 5px;
+  }
+  .navigation {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .ddivera1 {
+    margin-left: 0;
+  }
+  .hamburger {
+    left: 85%;
   }
 }
 
@@ -205,72 +287,11 @@ nav {
   font-family: "Courier New", Courier, monospace;
 }
 
-/* Header Responsiveness */
-
-@media (max-width: 992px) {
-  header {
-    padding: 15px;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-
-  .ddivera1 {
-    font-size: 1.4rem;
-  }
-}
-
-@media (max-width: 768px) {
-  header {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 10px;
-  }
-
-  .header1 {
-    display: none; /* Hide desktop nav */
-  }
-
-  .navigation {
-    display: block;
-    order: 3;
-    width: 100%;
-  }
-
-  .hamburger {
-    display: block;
-    margin-left: auto;
-  }
-
-  nav {
-    width: 100%;
-    background-color: #fff;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  nav ul {
-    flex-direction: column;
-    padding: 10px 0;
-  }
-
-  nav ul li {
-    margin: 0;
-    padding: 10px 20px;
-    text-align: center;
-    width: 100%;
-    border-bottom: 1px solid #eee;
-  }
-}
-
-@media (max-width: 576px) {
-  .ddivera1 p {
-    font-size: 1.2rem;
-  }
-
-  .h1dd {
-    font-size: 1.5rem;
-    margin: 15px 10px;
+  to {
+    opacity: 1;
   }
 }

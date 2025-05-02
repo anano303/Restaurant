@@ -1,3 +1,4 @@
+/* Optimized basket component CSS */
 .basket-container {
   max-width: 1200px;
   margin: 100px auto 40px;
@@ -15,6 +16,7 @@ h2 {
   animation: slideIn 0.8s ease-in-out forwards;
 }
 
+/* Empty basket */
 .empty-basket {
   text-align: center;
   padding: 40px;
@@ -28,7 +30,9 @@ h2 {
   margin-bottom: 20px;
 }
 
-.empty-basket button {
+.empty-basket button,
+.checkout-btn,
+.continue-shopping-btn {
   padding: 12px 24px;
   background: none;
   border: 3px solid black;
@@ -36,22 +40,25 @@ h2 {
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.5s ease;
+  transition: 0.5s;
 }
 
-.empty-basket button:hover {
+.empty-basket button:hover,
+.checkout-btn:hover {
   border-color: rgb(229, 16, 16);
   background-color: rgb(229, 16, 16);
   color: white;
 }
 
+/* Basket layout */
 .basket-content {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-.basket-items {
+.basket-items,
+.basket-summary {
   background-color: rgb(237, 229, 229);
   border-radius: 15px;
   padding: 20px;
@@ -71,12 +78,7 @@ h2 {
   border-bottom: none;
 }
 
-.basket-item.removing {
-  opacity: 0.5;
-  background-color: #ffebee;
-  transition: all 0.3s ease;
-}
-
+/* Item elements */
 .item-image img {
   width: 80px;
   height: 80px;
@@ -92,7 +94,6 @@ h2 {
 
 .item-price {
   font-weight: bold;
-  margin-bottom: 5px;
 }
 
 .item-attributes {
@@ -109,6 +110,7 @@ h2 {
   font-size: 12px;
 }
 
+/* Quantity controls */
 .item-quantity {
   display: flex;
   align-items: center;
@@ -126,7 +128,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .quantity-btn:hover {
@@ -146,24 +148,19 @@ h2 {
   cursor: pointer;
   font-size: 18px;
   color: #999;
-  transition: color 0.3s;
+  transition: 0.3s;
   padding: 5px;
 }
 
 .remove-btn:hover {
   color: rgb(229, 16, 16);
 }
-
 .remove-btn:disabled {
   opacity: 0.5;
-  cursor: not-allowed;
 }
 
+/* Basket summary */
 .basket-summary {
-  background-color: rgb(237, 229, 229);
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   align-self: flex-end;
   min-width: 300px;
 }
@@ -179,35 +176,23 @@ h2 {
 .checkout-btn {
   display: block;
   width: 100%;
-  padding: 15px;
   margin-top: 20px;
-  background: none;
-  border: 3px solid black;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.5s ease;
 }
 
-.checkout-btn:hover {
-  border-color: rgb(229, 16, 16);
-  background-color: rgb(229, 16, 16);
+.continue-shopping-btn {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.continue-shopping-btn:hover {
+  background-color: #333;
   color: white;
 }
 
-@keyframes slideIn {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Add loading spinner styles */
+/* Loading spinner */
 .loading-spinner {
   display: flex;
   flex-direction: column;
@@ -229,6 +214,7 @@ h2 {
   margin-bottom: 15px;
 }
 
+/* Animations */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -238,27 +224,18 @@ h2 {
   }
 }
 
-/* Add styles for continue shopping button */
-.continue-shopping-btn {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  background: none;
-  border: 2px solid #333;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.continue-shopping-btn:hover {
-  background-color: #333;
-  color: white;
-}
-
-/* Add notification styles (same as in products component) */
+/* Notification styles */
 .notification {
   position: fixed;
   top: 20px;
@@ -275,11 +252,9 @@ h2 {
 .notification.success {
   background-color: #4caf50;
 }
-
 .notification.error {
   background-color: #f44336;
 }
-
 .notification.fade-out {
   animation: fadeOut 0.5s ease-out forwards;
 }
@@ -304,19 +279,16 @@ h2 {
   }
 }
 
-/* Basket Page Responsiveness */
-
+/* Responsive styles */
 @media (max-width: 992px) {
   .basket-content {
     flex-direction: column;
   }
-
-  .basket-items {
-    width: 100%;
-  }
-
+  .basket-items,
   .basket-summary {
     width: 100%;
+  }
+  .basket-summary {
     margin-top: 20px;
   }
 }
@@ -330,39 +302,27 @@ h2 {
       "total total"
       "remove remove";
     grid-gap: 10px;
-    padding: 15px;
   }
 
   .item-image {
     grid-area: image;
   }
-
   .item-details {
     grid-area: details;
   }
-
   .item-quantity {
     grid-area: quantity;
     justify-content: flex-start;
   }
-
   .item-total {
     grid-area: total;
-    justify-content: flex-end;
-    font-size: 1.1rem;
+    justify-self: flex-end;
     margin-top: 10px;
   }
-
   .remove-btn {
     grid-area: remove;
     justify-self: start;
     margin-top: 5px;
-  }
-
-  .checkout-btn,
-  .continue-shopping-btn {
-    width: 100%;
-    margin: 5px 0;
   }
 }
 
@@ -370,49 +330,35 @@ h2 {
   .basket-item {
     padding: 10px;
   }
-
   .item-image img {
     max-width: 70px;
     max-height: 70px;
   }
-
   .item-details h3 {
     font-size: 1rem;
   }
-
-  .item-quantity button {
-    padding: 5px 8px;
-  }
-
   .item-attributes {
     flex-direction: column;
     align-items: flex-start;
   }
-
   .attribute {
     margin: 2px 0;
   }
-}
 
-@media (max-width: 768px) {
   .basket-item {
     grid-template-columns: 1fr;
     text-align: center;
   }
-
   .item-image {
     margin: 0 auto;
   }
-
   .item-quantity {
     justify-content: center;
     margin: 10px 0;
   }
-
   .item-total {
     margin: 10px 0;
   }
-
   .remove-btn {
     margin: 0 auto;
   }
