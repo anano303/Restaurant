@@ -1,0 +1,159 @@
+.footer {
+  background-color: #221c1c;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+  margin-top: 18%;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.footer-logo {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-logo-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.footer-logo-step {
+  font-size: 24px;
+  font-weight: bold;
+  color: red;
+}
+
+.footer-logo-restaurant {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.footer-links {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: red;
+}
+
+.footer-social {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-social p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.social-icon {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: red;
+}
+
+.footer-social {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-social p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+}
+
+.footer-social a {
+  text-decoration: none;
+}
+
+.footer-social .social-icon img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-social .social-icon img:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-logo,
+  .footer-links,
+  .footer-social {
+    text-align: center;
+  }
+
+  footer {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .footer-links {
+    margin-top: 15px;
+  }
+
+  .footer-links a {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-links {
+    flex-direction: column;
+  }
+
+  .footer-links a {
+    margin: 5px 0;
+  }
+}
+
+.footer-bottom span {
+  color: red;
+  font-size: 16px;
+}

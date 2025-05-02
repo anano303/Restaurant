@@ -1,0 +1,88 @@
+<div class="basket-container">
+  <h2>Your Cart</h2>
+
+  <div *ngIf="loading" class="loading-spinner">
+    <div class="spinner"></div>
+    <p>Loading cart...</p>
+  </div>
+
+  <div *ngIf="!loading && basketItems.length === 0" class="empty-basket">
+    <p>Your cart is empty</p>
+    <button routerLink="/all">Continue Shopping</button>
+  </div>
+
+  <div *ngIf="!loading && basketItems.length > 0" class="basket-content">
+    <div class="basket-items">
+      <div *ngFor="let item of basketItems; let i = index" class="basket-item">
+        <div class="item-image">
+          <img
+            [src]="item.product?.image || 'assets/placeholder.png'"
+            [alt]="item.product?.name || 'Product'"
+          />
+        </div>
+
+        <div class="item-details">
+          <h3>{{ item.product?.name || "Product" }}</h3>
+          <p class="item-price">${{ item.price }}</p>
+
+          <div class="item-attributes" *ngIf="item.product">
+            <span *ngIf="item.product.nuts" class="attribute"
+              >Contains Nuts</span
+            >
+            <span *ngIf="item.product.vegeterian" class="attribute"
+              >Vegetarian</span
+            >
+            <span class="attribute"
+              >Spiciness: 🔥{{ item.product.spiciness }}</span
+            >
+          </div>
+        </div>
+
+        <div class="item-quantity">
+          <button (click)="updateQuantity(item, -1)" class="quantity-btn">
+            -
+          </button>
+          <span>{{ item.quantity }}</span>
+          <button (click)="updateQuantity(item, 1)" class="quantity-btn">
+            +
+          </button>
+        </div>
+
+        <div class="item-total">
+          ${{ (item.price * item.quantity).toFixed(2) }}
+        </div>
+
+        <button
+          (click)="removeItem(item, i)"
+          [disabled]="loading"
+          class="remove-btn"
+          [title]="'Remove item ' + i"
+        >
+          {{ loading ? "..." : "✕" }}
+        </button>
+
+        <button *ngIf="false" (click)="testDelete(item)" class="test-btn">
+          Test
+        </button>
+      </div>
+    </div>
+
+    <div class="basket-summary">
+      <div class="summary-row">
+        <span>Total:</span>
+        <span>${{ totalPrice.toFixed(2) }}</span>
+      </div>
+
+      <button (click)="checkout()" class="checkout-btn">
+        Proceed to Checkout
+      </button>
+      <button routerLink="/all" class="continue-shopping-btn">
+        Continue Shopping
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="notification-container">
+  <!-- Notifications will be inserted here dynamically -->
+</div>

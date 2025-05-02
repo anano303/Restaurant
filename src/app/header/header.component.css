@@ -1,0 +1,276 @@
+body {
+  font-family: "Roboto", serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #221c1c;
+  color: white;
+  border-radius: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+  margin: 0 20px;
+  font-weight: bold;
+}
+
+.header1 a {
+  text-decoration: none;
+  color: rgb(230, 230, 216);
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.header1 .a1 {
+  margin-left: -325px;
+}
+
+.header1 .a2:hover {
+  background-color: rgb(196, 196, 175);
+  color: red;
+}
+
+.header1 a:hover {
+  background-color: rgb(229, 16, 16);
+  color: #221c1c;
+  transition: 0.3s;
+  transform: translateX(2px);
+}
+
+.header1 {
+  display: flex;
+}
+
+.cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: rgb(229, 16, 16);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 24px;
+  margin: 0;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.ddivera1 p .spdd {
+  /* color: rgb(190, 37, 37); */
+  color: rgb(229, 16, 16);
+  font-size: 32px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.ddivera1 p .spdd1 {
+  color: rgb(196, 196, 175);
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+nav {
+  position: absolute;
+  top: 100px;
+  right: 50px;
+  width: 250px;
+}
+
+.navigation {
+  position: fixed;
+  right: -500px;
+  width: 350px;
+  height: 50%;
+  background-color: #221c1c;
+  transition: 0.5s;
+  border-radius: 10%;
+  margin-top: -25px;
+}
+
+.navigation ul li {
+  color: rgb(236, 228, 228);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  text-align: right;
+  text-transform: uppercase;
+  list-style-type: none;
+  font-size: 1.5em;
+  padding: 20px 30px;
+  border-bottom: 1pt solid red;
+}
+.navigation ul li:hover {
+  color: red;
+  transition: 0.5s;
+}
+
+.hamburger,
+.bar {
+  position: fixed;
+}
+
+.hamburger {
+  display: none;
+  top: 5%;
+  left: 95%;
+  width: 40px;
+  height: 40px;
+  transform: translateY(-50%);
+  border: 0;
+  background: 0 0;
+}
+
+.bar {
+  top: 3px;
+  background: #000;
+  width: 100%;
+  height: 4px;
+  transition: all 0.3s ease-in;
+  background-color: lightblue;
+}
+
+#bar2 {
+  top: 11px;
+}
+
+#bar3 {
+  top: 19px;
+}
+
+.navigation.active {
+  right: 0;
+}
+
+.hamburger.open #bar1 {
+  background-color: #fff;
+  transform: rotate(45deg) translate(6px, 5px);
+}
+
+.hamburger.open #bar2 {
+  background-color: transparent;
+}
+
+.hamburger.open #bar3 {
+  background-color: #fff;
+  transform: rotate(-45deg) translate(6px, -5px);
+}
+@media screen and (max-width: 750px) {
+  .hamburger {
+    display: flex;
+    margin-left: -100px;
+    margin-top: 25px;
+  }
+  .header1 {
+    display: none;
+  }
+}
+
+.h1dd {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 40px;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
+  margin-top: 70px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Header Responsiveness */
+
+@media (max-width: 992px) {
+  header {
+    padding: 15px;
+  }
+
+  .ddivera1 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .header1 {
+    display: none; /* Hide desktop nav */
+  }
+
+  .navigation {
+    display: block;
+    order: 3;
+    width: 100%;
+  }
+
+  .hamburger {
+    display: block;
+    margin-left: auto;
+  }
+
+  nav {
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  nav ul li {
+    margin: 0;
+    padding: 10px 20px;
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+@media (max-width: 576px) {
+  .ddivera1 p {
+    font-size: 1.2rem;
+  }
+
+  .h1dd {
+    font-size: 1.5rem;
+    margin: 15px 10px;
+  }
+}
