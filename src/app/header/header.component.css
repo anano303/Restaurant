@@ -10,7 +10,7 @@ header {
   margin-bottom: 30px;
   top: 0;
   left: 0;
-  width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -211,8 +211,11 @@ nav {
 @media screen and (max-width: 768px) {
   .hamburger {
     display: flex;
-    /* margin-left: -100px; */
-    margin-top: 25px;
+    position: fixed;
+    top: 5%;
+    right: 11%;
+    left: auto; /* Override left positioning */
+    margin: 0; /* Remove margins that could affect positioning */
     z-index: 1001;
   }
 
@@ -250,8 +253,8 @@ nav {
 
 @media screen and (max-width: 576px) {
   .hamburger {
-    top: 3%;
-    right: 10%;
+    top: 5%;
+    right: 11%;
   }
 
   .ddivera1 p .spdd {
@@ -272,9 +275,9 @@ nav {
   .ddivera1 {
     margin-left: 0;
   }
-  .hamburger {
-    left: 85%;
-  }
+  /* .hamburger {
+    right: 10px; 
+  } */
 }
 
 .h1dd {

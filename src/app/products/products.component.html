@@ -1,115 +1,119 @@
 <!-- კატეგორიების ფილტრი -->
 <div class="filter-container">
-  <div class="categories-container">
-    <button
-      (click)="fetchFilteredProducts(0)"
-      [class.active]="selectedCategoryId === 0"
-    >
-      All
-    </button>
-    <button
-      *ngFor="let category of categories"
-      (click)="fetchFilteredProducts(category.id)"
-      [class.active]="selectedCategoryId === category.id"
-    >
-      {{ category.name }}
-    </button>
+  <div class="categories-scroll-container">
+    <div class="categories-container">
+      <button
+        (click)="fetchFilteredProducts(0)"
+        [class.active]="selectedCategoryId === 0"
+      >
+        All
+      </button>
+      <button
+        *ngFor="let category of categories"
+        (click)="fetchFilteredProducts(category.id)"
+        [class.active]="selectedCategoryId === category.id"
+      >
+        {{ category.name }}
+      </button>
+    </div>
   </div>
 </div>
 
-<!-- filter mushaoba -->
-<div class="filter-mtliani">
-  <div class="filter">
-    <div class="filterflex">
-      <label class="lastBtg">🔥 spiciness:</label>
-      <select
-        class="wiwakis-raodenoba"
-        (change)="toggleFilter('spiciness', $event)"
-      >
-        <option value="">Not chosen</option>
-        <option value="0">🔥 0</option>
-        <option value="1">🔥 1</option>
-        <option value="2">🔥 2</option>
-        <option value="3">🔥 3</option>
-      </select>
-    </div>
+<div class="flex">
+  <!-- filter mushaoba -->
+  <div class="filter-mtliani">
+    <div class="filter">
+      <div class="filterflex">
+        <label class="lastBtg">🔥 spiciness:</label>
+        <select
+          class="wiwakis-raodenoba"
+          (change)="toggleFilter('spiciness', $event)"
+        >
+          <option value="">Not chosen</option>
+          <option value="0">🔥 0</option>
+          <option value="1">🔥 1</option>
+          <option value="2">🔥 2</option>
+          <option value="3">🔥 3</option>
+        </select>
+      </div>
 
-    <!-- Replace the two separate nut checkboxes with radio buttons -->
-    <div class="nuts-filter">
-      <label class="lastBtn">Nuts:</label>
-      <div>
+      <!-- Replace the two separate nut checkboxes with radio buttons -->
+      <div class="nuts-filter">
+        <label class="lastBtn">Nuts:</label>
+        <div>
+          <label class="lastBtn">
+            <input
+              type="radio"
+              name="nutsFilter"
+              value="all"
+              [checked]="true"
+              (change)="toggleFilter('nuts', $event, 'all')"
+            />
+            All
+          </label>
+          <label class="lastBtn">
+            <input
+              type="radio"
+              name="nutsFilter"
+              value="true"
+              (change)="toggleFilter('nuts', $event, 'true')"
+            />
+            Contains Nuts
+          </label>
+          <label class="lastBtn">
+            <input
+              type="radio"
+              name="nutsFilter"
+              value="false"
+              (change)="toggleFilter('nuts', $event, 'false')"
+            />
+            No Nuts
+          </label>
+        </div>
+      </div>
+
+      <div class="checkbox-cotaqvevitdaweva">
         <label class="lastBtn">
           <input
-            type="radio"
-            name="nutsFilter"
-            value="all"
-            [checked]="true"
-            (change)="toggleFilter('nuts', $event, 'all')"
+            type="checkbox"
+            data-filter="vegeterian"
+            (change)="toggleFilter('vegeterian', $event)"
           />
-          All
-        </label>
-        <label class="lastBtn">
-          <input
-            type="radio"
-            name="nutsFilter"
-            value="true"
-            (change)="toggleFilter('nuts', $event, 'true')"
-          />
-          Contains Nuts
-        </label>
-        <label class="lastBtn">
-          <input
-            type="radio"
-            name="nutsFilter"
-            value="false"
-            (change)="toggleFilter('nuts', $event, 'false')"
-          />
-          No Nuts
+          Vegetarian Only
         </label>
       </div>
-    </div>
 
-    <div class="checkbox-cotaqvevitdaweva">
-      <label class="lastBtn">
-        <input
-          type="checkbox"
-          data-filter="vegeterian"
-          (change)="toggleFilter('vegeterian', $event)"
-        />
-        Vegetarian Only
-      </label>
+      <button class="resetfilterdesign" (click)="resetFilters()">
+        RESET FILTER
+      </button>
     </div>
-
-    <button class="resetfilterdesign" (click)="resetFilters()">
-      RESET FILTER
-    </button>
   </div>
-</div>
 
-<!-- პროდუქტების ჩვენება -->
+  <!-- პროდუქტების ჩვენება -->
 
-<div class="list">
-  <div *ngFor="let product of products" class="list-item">
-    <img [src]="product?.image" alt="{{ product?.name }}" />
+  <div class="list">
+    <div *ngFor="let product of products" class="list-item">
+      <img [src]="product?.image" alt="{{ product?.name }}" />
 
-    <div class="dizainitextlist">
-      <h1>{{ product?.name }}</h1>
+      <div class="dizainitextlist">
+        <h1>{{ product?.name }}</h1>
 
-      <div class="spiciness-container">
-        <span>Spiciness: 🔥{{ product.spiciness }}</span>
-      </div>
+        <div class="spiciness-container">
+          <span>Spiciness: 🔥{{ product.spiciness }}</span>
+        </div>
 
-      <div
-        *ngIf="product?.nuts || product?.vegeterian"
-        class="nuts-vegeterian-yes-or-no"
-      >
-        <span *ngIf="product?.nuts">☑️ Nuts </span>
-        <span *ngIf="product?.vegeterian">☑️ Vegetarian </span>
-      </div>
+        <div
+          *ngIf="product?.nuts || product?.vegeterian"
+          class="nuts-vegeterian-yes-or-no"
+        >
+          <span *ngIf="product?.nuts">☑️ Nuts </span>
+          <span *ngIf="product?.vegeterian">☑️ Vegetarian </span>
+        </div>
 
-      <div class="price-container">
-        <h2>$ {{ product.price }}</h2>
-        <button (click)="addToCart(product, $event)">Add to cart</button>
+        <div class="price-container">
+          <h2>$ {{ product.price }}</h2>
+          <button (click)="addToCart(product, $event)">Add to cart</button>
+        </div>
       </div>
     </div>
   </div>

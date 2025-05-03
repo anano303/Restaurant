@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BasketService, BasketItem } from '../services/basket.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-basket',
@@ -15,7 +16,7 @@ export class BasketComponent implements OnInit {
   totalPrice: number = 0;
   loading: boolean = false;
 
-  constructor(private basketService: BasketService) {}
+  constructor(private basketService: BasketService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadBasketItems();
@@ -159,5 +160,9 @@ export class BasketComponent implements OnInit {
 
     // Also show a notification so the user knows we're trying
     this.showNotification('Testing different delete methods...');
+  }
+
+  goToHome(): void {
+    this.router.navigate(['/']);
   }
 }

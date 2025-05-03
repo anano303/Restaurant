@@ -8,7 +8,7 @@
 
   <div *ngIf="!loading && basketItems.length === 0" class="empty-basket">
     <p>Your cart is empty</p>
-    <button routerLink="/all">Continue Shopping</button>
+    <button routerLink="/">Continue Shopping</button>
   </div>
 
   <div *ngIf="!loading && basketItems.length > 0" class="basket-content">
@@ -76,7 +76,7 @@
       <button (click)="checkout()" class="checkout-btn">
         Proceed to Checkout
       </button>
-      <button routerLink="/all" class="continue-shopping-btn">
+      <button routerLink="/" class="continue-shopping-btn">
         Continue Shopping
       </button>
     </div>
