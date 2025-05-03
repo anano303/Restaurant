@@ -1,0 +1,24 @@
+/* Add minimum height to ensure the main content pushes the footer down */
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+router-outlet {
+  flex: 1;
+}
+
+/* This empty div will take up space and push the footer down */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 70vh; /* Ensure minimum height for content area */
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    min-height: 60vh; /* Slightly less minimum height on mobile */
+  }
+}
