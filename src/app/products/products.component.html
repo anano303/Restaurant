@@ -27,6 +27,7 @@
         <label class="lastBtg">🔥 spiciness:</label>
         <select
           class="wiwakis-raodenoba"
+          [(ngModel)]="selectedSpiciness"
           (change)="toggleFilter('spiciness', $event)"
         >
           <option value="">Not chosen</option>
@@ -46,7 +47,7 @@
               type="radio"
               name="nutsFilter"
               value="all"
-              [checked]="true"
+              [(ngModel)]="selectedNutsFilter"
               (change)="toggleFilter('nuts', $event, 'all')"
             />
             All
@@ -56,6 +57,7 @@
               type="radio"
               name="nutsFilter"
               value="true"
+              [(ngModel)]="selectedNutsFilter"
               (change)="toggleFilter('nuts', $event, 'true')"
             />
             Contains Nuts
@@ -65,6 +67,7 @@
               type="radio"
               name="nutsFilter"
               value="false"
+              [(ngModel)]="selectedNutsFilter"
               (change)="toggleFilter('nuts', $event, 'false')"
             />
             No Nuts
@@ -77,6 +80,7 @@
           <input
             type="checkbox"
             data-filter="vegeterian"
+            [(ngModel)]="isVegeterianChecked"
             (change)="toggleFilter('vegeterian', $event)"
           />
           Vegetarian Only
@@ -112,7 +116,9 @@
 
         <div class="price-container">
           <h2>$ {{ product.price }}</h2>
-          <button (click)="addToCart(product, $event)">Add to cart</button>
+          <button #addButton (click)="addToCart(product, addButton)">
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
