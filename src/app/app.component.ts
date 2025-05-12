@@ -11,5 +11,5 @@ import { HeaderComponent } from './header/header.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'proeqti-ivera';
+  title = 'Restaurant';
 }

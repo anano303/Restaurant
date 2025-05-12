@@ -55,10 +55,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "proeqti-ivera:build:production"
+              "buildTarget": "Restaurant:build:production"
             },
             "development": {
-              "buildTarget": "proeqti-ivera:build:development"
+              "buildTarget": "Restaurant:build:development"
             }
           },
           "defaultConfiguration": "development"
